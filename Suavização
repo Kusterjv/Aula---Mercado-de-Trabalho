@@ -1,0 +1,36 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+from google.colab.patches import cv2_imshow
+
+img_in = cv2.imread('data/Fig0333(a)(test_pattern_blurring_orig).tif',0)
+
+kernel = np.ones((5,5),np.float32)/25
+
+img_out_1 = cv2.filter2D(img_in,-1,kernel)
+
+img_out_2 = cv2.blur(img_in,(5,5))
+
+img_out_3 = cv2.GaussianBlur(img_in,(5,5),0)
+
+img_out_4 = cv2.medianBlur(img_in,5)
+
+
+cv2_imshow(img_in)
+cv2_imshow(img_out_1)
+cv2_imshow(img_out_2)
+cv2_imshow(img_out_3)
+cv2_imshow(img_out_4)
+'''
+cv2.imshow('in', img_in)
+cv2.waitKey(0)
+#cv2.imshow('out1', img_out_1)
+#cv2.waitKey(0)
+#cv2.imshow('out2', img_out_2)
+#cv2.waitKey(0)
+cv2.imshow('out2', img_out_3)
+cv2.waitKey(0)
+cv2.imshow('out2', img_out_4)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+'''
